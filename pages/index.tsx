@@ -1,6 +1,9 @@
 import Head from 'next/head'
+import { useRecoilValue } from 'recoil'
+import { modalState } from '../atoms/modalAtom'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
+import Modall from '../components/Modal'
 import Row from '../components/Row'
 import { Movie } from '../typings'
 import requests from '../utils/requests'
@@ -27,6 +30,7 @@ const Home = ({
   trendingNow,
 }: Props) => {
 
+  const showModal = useRecoilValue(modalState)
 
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
@@ -52,6 +56,7 @@ const Home = ({
         </section>
       </main>
       {/* Modal */}
+      {showModal && <Modall />}
     </div>
   )
 }
